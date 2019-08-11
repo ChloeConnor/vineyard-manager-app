@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
+import com.example.vineyardmanager.RvAdapter
 import com.example.vineyardmanager.dataTypes.Vineyard
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         val rvAdapter = RvAdapter(dataList)
 
-        recyclerView.adapter = rvAdapter;
+        recyclerView.adapter = rvAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
