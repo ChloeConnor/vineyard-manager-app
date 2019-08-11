@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_plots">Plots</string>
     <string name="vineyards_title">Vineyards</string>
+    <string name="CreateVineyardPromptMessage">Enter a Vineyard Name</string>
+    <string name="SubmitVineyard">Add Plots</string>
 </resources>

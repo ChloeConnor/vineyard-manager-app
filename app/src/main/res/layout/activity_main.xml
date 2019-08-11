@@ -15,7 +15,7 @@
             android:text="Vineyards"
             android:textSize="20pt"
             android:textAlignment="center"
-            android:textColor="@color/colourTextHeader"
+            android:textColor="@color/colorTextHeader"
             android:layout_marginTop="20dp"
     />
 
