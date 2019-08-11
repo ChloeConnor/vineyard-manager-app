@@ -5,6 +5,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
@@ -17,12 +18,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)
 
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Add", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Add", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         val dataList = ArrayList<Vineyard>()
         dataList.add(Vineyard("Davenport"))
-        dataList.add(Vineyard("New"))
+        dataList.add(Vineyard("Chapel Down"))
 
         val rvAdapter = RvAdapter(dataList)
 

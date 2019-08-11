@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.dataTypes.Vineyard
 
 class RvAdapter(val vineyardList: ArrayList<Vineyard>) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.adapter_item_layout, p0, false)
         return ViewHolder(v)
