@@ -10,20 +10,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
 import com.example.vineyardmanager.RvAdapter
 import com.example.vineyardmanager.dataTypes.Vineyard
-
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_plots.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+//        setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+//        fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Add", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+//        }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
@@ -31,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         val dataList = ArrayList<Vineyard>()
         dataList.add(Vineyard("Davenport"))
+        dataList.add(Vineyard("New"))
 
         val rvAdapter = RvAdapter(dataList)
 

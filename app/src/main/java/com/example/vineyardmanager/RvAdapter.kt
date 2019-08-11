@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+
 import com.example.vineyardmanager.dataTypes.Vineyard
 
 class RvAdapter(val vineyardList: ArrayList<Vineyard>) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
@@ -19,6 +20,7 @@ class RvAdapter(val vineyardList: ArrayList<Vineyard>) : RecyclerView.Adapter<Rv
 
         p0.name.text = vineyardList[p1].name
     }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.tvName)
 
