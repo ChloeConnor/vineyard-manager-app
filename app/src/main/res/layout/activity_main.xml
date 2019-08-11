@@ -8,9 +8,18 @@
         tools:context=".Activities.MainActivity"
         android:orientation="vertical">
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_input_add"/>
+
     <TextView
             android:id="@+id/my_text_view"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
             android:layout_width="match_parent"
             android:text="Vineyards"
             android:textSize="20pt"
@@ -29,28 +38,11 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
-
-
     <com.google.android.material.appbar.AppBarLayout
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:theme="@style/AppTheme.AppBarOverlay"/>
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom|end"
-    android:layout_margin="@dimen/fab_margin"
-    app:srcCompat="@android:drawable/ic_dialog_email"/>
-
-    <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
-    app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
 
 </LinearLayout>
