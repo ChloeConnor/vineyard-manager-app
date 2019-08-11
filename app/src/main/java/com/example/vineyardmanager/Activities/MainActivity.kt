@@ -1,10 +1,14 @@
-package com.example.vineyardmanager
+package com.example.vineyardmanager.Activities
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.vineyardmanager.R
+import com.example.vineyardmanager.dataTypes.Vineyard
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,6 +23,17 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+
+        val dataList = ArrayList<Vineyard>()
+        dataList.add(Vineyard("Davenport"))
+
+        val rvAdapter = RvAdapter(dataList)
+
+        recyclerView.adapter = rvAdapter;
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
