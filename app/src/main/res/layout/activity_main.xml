@@ -12,10 +12,10 @@
             android:id="@+id/my_text_view"
             android:layout_height="100dp"
             android:layout_width="match_parent"
-            android:text="Vineyards"
-            android:textSize="20pt"
+            android:text="@string/vineyards_title"
+            android:textSize="16pt"
             android:textAlignment="center"
-            android:textColor="@color/colorTextHeader"
+            android:textColor="@color/colorPrimary"
             android:layout_marginTop="20dp"
     />
 
