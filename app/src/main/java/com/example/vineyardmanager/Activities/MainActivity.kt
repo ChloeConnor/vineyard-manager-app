@@ -1,5 +1,6 @@
 package com.example.vineyardmanager.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Add", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            intent = Intent(this, PlotsHome::class.java)
+            startActivity(intent)
         }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
