@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            intent = Intent(this, PlotsHome::class.java)
+            intent = Intent(this, CreateVineyard::class.java)
             startActivity(intent)
         }
 
