@@ -9,11 +9,7 @@
         tools:showIn="@layout/activity_main"
         tools:context=".Activities.MainActivity">
 
-    <androidx.cardview.widget.CardView
-            android:layout_width="395dp"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="166dp"
-            tools:layout_editor_absoluteX="8dp" android:id="@+id/vineyards_card"
-    ></androidx.cardview.widget.CardView>
+
     <TextView
             android:id="@+id/info_text"
             android:layout_width="match_parent"

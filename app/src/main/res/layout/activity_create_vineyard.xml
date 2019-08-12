@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="16dp"
+              android:paddingRight="16dp"
+              android:orientation="vertical">
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+    <Button
+            android:text="@string/SubmitVineyardButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/button"
+            android:background="@drawable/vm_buttonbackground"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/CreateVineyardHintMessage"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:textColor="@color/colorPrimaryDark"/>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+    <TextView
+            android:text="@string/CreateVineyardChooseDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/choose_default"/>
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+    <Switch
+            android:text="@string/Switch1Buds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/switch1"
+            android:textColor="@color/colorPrimaryDark"/>
+    <Switch
+            android:text="@string/Switch2Shoots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/switch2"
+            android:textColor="@color/colorPrimaryDark"/>
+    <Switch
+            android:text="@string/Switch3Flowers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/switch3"
+            android:textColor="@color/colorPrimaryDark"/>
+    <Switch
+            android:text="@string/Switch4Bunches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/switch4"
+            android:textColor="@color/colorPrimaryDark"/>
+    <Switch
+            android:text="@string/Switch5Weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/switch5"
+            android:textColor="@color/colorPrimaryDark"/>
+
+</LinearLayout>
