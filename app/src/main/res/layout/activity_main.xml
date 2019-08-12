@@ -15,13 +15,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_input_add"/>
+            app:srcCompat="@android:drawable/ic_input_add" app:rippleColor="#ffffff"/>
 
     <TextView
             android:id="@+id/my_text_view"
             android:layout_height="75dp"
             android:layout_width="match_parent"
-            android:text="Vineyards"
+            android:text="@string/vineyards_title"
             android:textSize="20pt"
             android:textAlignment="center"
             android:textColor="@color/colourTextHeader"
