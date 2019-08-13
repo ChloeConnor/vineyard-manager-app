@@ -14,7 +14,9 @@
             android:layout_width="411dp"
             android:layout_height="28dp"
             android:id="@+id/space"
-            app:layout_constraintTop_toTopOf="@id/main_view"/>
+            app:layout_constraintTop_toTopOf="@id/main_view"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="144dp" app:srcCompat="@mipmap/logo" android:id="@+id/logo"
@@ -34,7 +36,7 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="404dp"
-            android:layout_height="404dp"
+            android:layout_height="0dp"
             android:scrollbars="vertical"
             android:layout_margin="6dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -43,6 +45,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/my_text_view" tools:targetApi="p"
             app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintBottom_toBottomOf="@id/main_view"
             android:textColor="@color/colorAccent">
     </androidx.recyclerview.widget.RecyclerView>
 

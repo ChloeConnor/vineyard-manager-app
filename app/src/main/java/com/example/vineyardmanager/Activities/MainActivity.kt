@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
 import com.example.vineyardmanager.RvAdapter
 import com.example.vineyardmanager.dataTypes.Vineyard
+import kotlinx.android.synthetic.main.activity_create_vineyard.*
 import kotlinx.android.synthetic.main.activity_plots.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,16 @@ class MainActivity : AppCompatActivity() {
 
         val dataList = ArrayList<Vineyard>()
         dataList.add(Vineyard("Davenport"))
-        dataList.add(Vineyard("Chapel Down"))
+        dataList.add(Vineyard("Chapel Down1"))
+        dataList.add(Vineyard("Chapel Down2"))
+        dataList.add(Vineyard("Chapel Down3"))
+        dataList.add(Vineyard("Chapel Down4"))
+        dataList.add(Vineyard("Chapel Down5"))
+        dataList.add(Vineyard("Chapel Down6"))
+        dataList.add(Vineyard("Chapel Down7"))
+        dataList.add(Vineyard("Chapel Down8"))
+        dataList.add(Vineyard("Chapel Down9"))
+        dataList.add(Vineyard("Chapel Down10"))
 
         val rvAdapter = RvAdapter(dataList)
 
