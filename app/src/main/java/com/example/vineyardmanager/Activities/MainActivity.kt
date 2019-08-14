@@ -1,19 +1,19 @@
 package com.example.vineyardmanager.Activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
 import com.example.vineyardmanager.RvAdapter
 import com.example.vineyardmanager.dataTypes.Vineyard
-import kotlinx.android.synthetic.main.activity_create_vineyard.*
 import kotlinx.android.synthetic.main.activity_plots.*
+import java.io.File
+import java.io.FileInputStream
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,22 +29,31 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        val path = getExternalFilesDir(null)
+        val letDirectory = File(path, "LET")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "Records.txt")
 
-        val dataList = ArrayList<Vineyard>()
-        dataList.add(Vineyard("Davenport"))
-        dataList.add(Vineyard("Chapel Down1"))
-        dataList.add(Vineyard("Chapel Down2"))
-        dataList.add(Vineyard("Chapel Down3"))
-        dataList.add(Vineyard("Chapel Down4"))
-        dataList.add(Vineyard("Chapel Down5"))
-        dataList.add(Vineyard("Chapel Down6"))
-        dataList.add(Vineyard("Chapel Down7"))
-        dataList.add(Vineyard("Chapel Down8"))
-        dataList.add(Vineyard("Chapel Down9"))
-        dataList.add(Vineyard("Chapel Down10"))
+        val vineyardName: String? = intent.getStringExtra("VineyardName")
 
-        val rvAdapter = RvAdapter(dataList)
+        if (vineyardName != null) {
+            file.appendText("$vineyardName;")
+        } else {
+            file.appendText("Add a vineyard...;")
+        }
+
+        val readInVineyards: List<String> = FileInputStream(file)
+            .bufferedReader()
+            .use { it.readText() }
+            .split(";")
+
+        val vineyardsToShow = ArrayList<Vineyard>()
+
+        for (vineyard in readInVineyards) {
+            vineyardsToShow.add(Vineyard(vineyard))
+        }
+
+        val rvAdapter = RvAdapter(vineyardsToShow)
 
         recyclerView.adapter = rvAdapter
     }
@@ -64,4 +73,5 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }
