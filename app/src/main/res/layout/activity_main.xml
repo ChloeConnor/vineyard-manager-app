@@ -19,18 +19,25 @@
 
     <ImageView
             android:layout_width="match_parent"
-            android:layout_height="144dp" app:srcCompat="@mipmap/logo" android:id="@+id/logo"
+            app:srcCompat="@drawable/logo_long"
+            android:id="@+id/long_logp"
             app:layout_constraintTop_toBottomOf="@id/space"
-       />
+            app:layout_constraintBottom_toTopOf="@id/my_text_view"
+            android:layout_height="100dp"
+            android:layout_marginBottom="50dp"
+    />
+
+
     <TextView
             android:id="@+id/my_text_view"
             android:layout_height="75dp"
             android:layout_width="match_parent"
             android:text="@string/vineyards_title"
+            android:layout_marginTop="20dp"
             android:textSize="16pt"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@id/logo"/>
+            app:layout_constraintTop_toBottomOf="@id/long_logp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
