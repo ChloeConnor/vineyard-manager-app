@@ -1,6 +1,5 @@
 package com.example.vineyardmanager.Activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +14,8 @@ import kotlinx.android.synthetic.main.activity_plots.*
 import java.io.File
 import java.io.FileInputStream
 
+
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+
 
         val path = getExternalFilesDir(null)
         val letDirectory = File(path, "LET")
@@ -37,22 +40,27 @@ class MainActivity : AppCompatActivity() {
         val vineyardName: String? = intent.getStringExtra("VineyardName")
 
         if (vineyardName != null) {
-            file.appendText("$vineyardName;")
-        } else {
-            file.appendText("Add a vineyard...;")
+            file.appendText("$vineyardName;;")
         }
 
-        val readInVineyards: List<String> = FileInputStream(file)
-            .bufferedReader()
-            .use { it.readText() }
-            .split(";")
+        var readInVineyards = ArrayList<String>()
+        var vineyardsToShow = ArrayList<Vineyard>()
 
-        val vineyardsToShow = ArrayList<Vineyard>()
+        if (file.exists()) {
+            readInVineyards = ArrayList(FileInputStream(file)
+                .bufferedReader()
+                .use { it.readText() }
+                .split(";;"))
+        }
 
+        if (readInVineyards.isNotEmpty()) {
         for (vineyard in readInVineyards) {
             vineyardsToShow.add(Vineyard(vineyard))
-        }
+        }}
 
+        vineyardsToShow = ArrayList(vineyardsToShow.dropLast(1))
+
+        println("VINEYARDS TO SHOW: $vineyardsToShow")
         val rvAdapter = RvAdapter(vineyardsToShow)
 
         recyclerView.adapter = rvAdapter
