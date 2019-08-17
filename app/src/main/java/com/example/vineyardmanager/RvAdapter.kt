@@ -1,10 +1,14 @@
 package com.example.vineyardmanager
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vineyardmanager.Activities.EditVineyard
+import com.example.vineyardmanager.Activities.PlotsHome
 
 import com.example.vineyardmanager.dataTypes.Vineyard
 
@@ -12,6 +16,10 @@ class RvAdapter(val vineyardList: List<Vineyard>) : RecyclerView.Adapter<RvAdapt
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.adapter_item_layout, p0, false)
+        v.setOnClickListener { view ->
+            val intent = Intent(view.context, PlotsHome::class.java)
+            startActivity(view.context, intent, null)
+        }
         return ViewHolder(v)
     }
     override fun getItemCount(): Int {

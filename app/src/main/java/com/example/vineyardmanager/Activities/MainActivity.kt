@@ -1,7 +1,6 @@
 package com.example.vineyardmanager.Activities
 
 import android.content.Intent
-import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
@@ -13,8 +12,6 @@ import com.example.vineyardmanager.RvAdapter
 import com.example.vineyardmanager.dataTypes.Vineyard
 import com.example.vineyardmanager.database.VineyardManagerDatabase
 import kotlinx.android.synthetic.main.activity_plots.*
-import java.io.File
-import java.io.FileInputStream
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,11 +19,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+
 
         val db = VineyardManagerDatabase.getAppDatabase(this)
 
-        fab.setOnClickListener { view ->
+        fab_plots.setOnClickListener { view ->
             intent = Intent(this, CreateVineyard::class.java)
             startActivity(intent)
         }
@@ -55,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         val rvAdapter = RvAdapter(vineyardsToShow)
 
         recyclerView.adapter = rvAdapter
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

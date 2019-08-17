@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="@string/CreateVineyardHintMessage"
+            android:text="@string/create_vineyard_hint_message"
             android:ems="10"
             android:id="@+id/edit_vineyard_name"
             android:textColor="@color/colorPrimaryDark"
