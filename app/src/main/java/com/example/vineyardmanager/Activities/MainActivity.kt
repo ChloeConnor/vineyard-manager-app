@@ -8,10 +8,10 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
-import com.example.vineyardmanager.RvAdapter
+import com.example.vineyardmanager.RvAdapterVineyards
 import com.example.vineyardmanager.dataTypes.Vineyard
 import com.example.vineyardmanager.database.VineyardManagerDatabase
-import kotlinx.android.synthetic.main.activity_plots.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,12 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         val db = VineyardManagerDatabase.getAppDatabase(this)
 
-        fab_plots.setOnClickListener { view ->
+        fab_vineyards.setOnClickListener { view ->
             intent = Intent(this, CreateVineyard::class.java)
             startActivity(intent)
         }
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_vineyards)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         val newVineyard = Vineyard(
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         val vineyardsToShow: List<Vineyard> = db.dao().loadVineyards()
         println("vineyardsToShow: $vineyardsToShow")
 
-        val rvAdapter = RvAdapter(vineyardsToShow)
+        val rvAdapter = RvAdapterVineyards(vineyardsToShow)
 
         recyclerView.adapter = rvAdapter
 

@@ -10,8 +10,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".Activities.EditVineyard"
-                  android:label="@string/edit_vineyard_toolbar">
+        <activity android:name=".Activities.CreatePlot">
+        </activity>
+        <activity
+                android:name=".Activities.EditVineyard"
+                android:label="@string/edit_vineyard_toolbar">
         </activity>
         <activity
                 android:name=".Activities.CreateVineyard"
@@ -20,8 +23,7 @@
         <activity
                 android:name=".Activities.PlotsHome"
                 android:label="@string/title_activity_plots"
-                android:parentActivityName=".Activities.MainActivity"
-        >
+                android:parentActivityName=".Activities.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.example.vineyardmanager.Activities.MainActivity"/>
