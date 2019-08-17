@@ -36,13 +36,21 @@ class MainActivity : AppCompatActivity() {
 
         val newVineyard = Vineyard(
             name = intent.getStringExtra("VineyardName"),
-            client = intent.getStringExtra("Client")
+            client = intent.getStringExtra("Client"),
+            countBuds = intent.getBooleanExtra("CountBuds", true),
+            countShoots = intent.getBooleanExtra("CountShoots", true),
+            countFlowers = intent.getBooleanExtra("CountFlowers", true),
+            countGrapes = intent.getBooleanExtra("CountGrapes", true),
+            weight = intent.getBooleanExtra("Weight", true)
         )
+        println("newVineyard: $newVineyard")
 
-        db.dao().insertVineyard(newVineyard)
-        db.dao().deleteVineyardNullNames()
+        if (newVineyard.name != null && newVineyard.name != "") {
+            db.dao().insertVineyard(newVineyard)
+        }
 
         val vineyardsToShow: List<Vineyard> = db.dao().loadVineyards()
+        println("vineyardsToShow: $vineyardsToShow")
 
         val rvAdapter = RvAdapter(vineyardsToShow)
 
