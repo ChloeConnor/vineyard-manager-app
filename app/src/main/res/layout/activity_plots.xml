@@ -9,6 +9,20 @@
         tools:context=".Activities.PlotsHome"
         android:orientation="vertical">
 
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@string/plots_header"
+            android:layout_marginTop="@dimen/standard_edge_margin"
+            android:layout_marginEnd="@dimen/standard_edge_margin"
+            android:layout_marginStart="@dimen/standard_edge_margin"
+            app:layout_constraintTop_toTopOf="@id/plots_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            android:textSize="16pt"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/vineyard_name"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_plots"
@@ -23,5 +37,6 @@
             android:layout_width="100dp"
             android:layout_height="0dp"
             android:tint="#000000"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

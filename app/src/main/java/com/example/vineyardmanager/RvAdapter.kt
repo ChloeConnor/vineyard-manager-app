@@ -18,6 +18,8 @@ class RvAdapter(val vineyardList: List<Vineyard>) : RecyclerView.Adapter<RvAdapt
         val v = LayoutInflater.from(p0.context).inflate(R.layout.adapter_item_layout, p0, false)
         v.setOnClickListener { view ->
             val intent = Intent(view.context, PlotsHome::class.java)
+            intent.putExtra("vineyardName", vineyardList[p1].name)
+            intent.putExtra("vineyardID", vineyardList[p1].vineyardID)
             startActivity(view.context, intent, null)
         }
         return ViewHolder(v)

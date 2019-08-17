@@ -15,7 +15,7 @@
         </activity>
         <activity
                 android:name=".Activities.CreateVineyard"
-                android:label="@string/CreateVineyardToolbar">
+                android:label="@string/create_vineyard_toolbar">
         </activity>
         <activity
                 android:name=".Activities.PlotsHome"
