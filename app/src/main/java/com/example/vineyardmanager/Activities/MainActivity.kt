@@ -1,6 +1,7 @@
 package com.example.vineyardmanager.Activities
 
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
@@ -10,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
 import com.example.vineyardmanager.RvAdapter
 import com.example.vineyardmanager.dataTypes.Vineyard
+import com.example.vineyardmanager.database.VineyardManagerDatabase
 import kotlinx.android.synthetic.main.activity_plots.*
 import java.io.File
 import java.io.FileInputStream
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        val db = VineyardManagerDatabase.getAppDatabase(this)
+
         fab.setOnClickListener { view ->
             intent = Intent(this, CreateVineyard::class.java)
             startActivity(intent)
@@ -31,36 +34,16 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
+        val newVineyard = Vineyard(
+            name = intent.getStringExtra("VineyardName"),
+            client = intent.getStringExtra("Client")
+        )
 
-        val path = getExternalFilesDir(null)
-        val letDirectory = File(path, "LET")
-        letDirectory.mkdirs()
-        val file = File(letDirectory, "Records.txt")
+        db.dao().insertVineyard(newVineyard)
+        db.dao().deleteVineyardNullNames()
 
-        val vineyardName: String? = intent.getStringExtra("VineyardName")
+        val vineyardsToShow: List<Vineyard> = db.dao().loadVineyards()
 
-        if (vineyardName != null) {
-            file.appendText("$vineyardName;;")
-        }
-
-        var readInVineyards = ArrayList<String>()
-        var vineyardsToShow = ArrayList<Vineyard>()
-
-        if (file.exists()) {
-            readInVineyards = ArrayList(FileInputStream(file)
-                .bufferedReader()
-                .use { it.readText() }
-                .split(";;"))
-        }
-
-        if (readInVineyards.isNotEmpty()) {
-        for (vineyard in readInVineyards) {
-            vineyardsToShow.add(Vineyard(vineyard))
-        }}
-
-        vineyardsToShow = ArrayList(vineyardsToShow.dropLast(1))
-
-        println("VINEYARDS TO SHOW: $vineyardsToShow")
         val rvAdapter = RvAdapter(vineyardsToShow)
 
         recyclerView.adapter = rvAdapter
