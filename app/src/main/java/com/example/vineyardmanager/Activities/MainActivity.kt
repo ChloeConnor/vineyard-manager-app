@@ -67,12 +67,15 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("vineyardNameHeader", vineyardsToShow[position].name)
                 intent.putExtra("vineyardID", vineyardsToShow[position].vineyardID)
                 ContextCompat.startActivity(view.context, intent, null)
-                intent.putExtra("VineyardNameToAddPlots", vineyardsToShow[position].name)
-//                Toast.makeText(this@MainActivity, vineyardsToShow[position].name, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, vineyardsToShow[position].name + "'s plots", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onLongClick(view: View?, position: Int) {
-
+            override fun onLongClick(view: View, position: Int) {
+                val intent = Intent(view.context, EditVineyard::class.java)
+                intent.putExtra("vineyardNameHeader", vineyardsToShow[position].name)
+                intent.putExtra("vineyardID", vineyardsToShow[position].vineyardID)
+                Toast.makeText(this@MainActivity, "Edit " + vineyardsToShow[position].name, Toast.LENGTH_SHORT).show()
+                startActivity(intent)
             }}))}
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -96,7 +99,7 @@ class MainActivity : AppCompatActivity() {
     interface ClickListener {
         fun onClick(view: View, position: Int)
 
-        fun onLongClick(view: View?, position: Int)
+        fun onLongClick(view: View, position: Int)
     }
 
     class RecyclerTouchListener(
@@ -118,7 +121,6 @@ class MainActivity : AppCompatActivity() {
                     override fun onLongPress(e: MotionEvent) {
                         val child = recyclerView.findChildViewUnder(e.x, e.y)
                         if (child != null && clickListener != null) {
-                            //FIXME: this should go to edit vineyard activity
                             clickListener.onLongClick(
                                 child,
                                 recyclerView.getChildAdapterPosition(child)
