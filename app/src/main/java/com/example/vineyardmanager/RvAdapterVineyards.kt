@@ -15,11 +15,13 @@ class RvAdapterVineyards(val vineyardList: List<Vineyard>) : RecyclerView.Adapte
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.adapter_item_layout_vineyards, p0, false)
+
         v.setOnClickListener { view ->
             val intent = Intent(view.context, PlotsHome::class.java)
-            intent.putExtra("vineyardName", vineyardList[p1].name)
+            intent.putExtra("vineyardNameHeader", vineyardList[p1].name) //FIXME:
             intent.putExtra("vineyardID", vineyardList[p1].vineyardID)
             startActivity(view.context, intent, null)
+
         }
         return ViewHolder(v)
     }

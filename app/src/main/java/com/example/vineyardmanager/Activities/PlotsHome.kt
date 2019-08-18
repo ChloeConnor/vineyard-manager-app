@@ -28,10 +28,10 @@ class PlotsHome : AppCompatActivity() {
         val recyclerViewPlots = findViewById<RecyclerView>(R.id.recycler_view_plots)
         recyclerViewPlots.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-        val vineyardName = intent.getStringExtra("vineyardName")
+        val vineyardName = intent.getStringExtra("vineyardNameHeader")
         val plotName = intent.getStringExtra("plotName")
         val vineyardID = intent.getLongExtra("vineyardID", 0)
-        vineyard_name.text = "$vineyardName's  Plots"
+        vineyard_name.text = "$vineyardName's Plots"
 
         val newPlot = Plot(
             vineyardID = vineyardID,
