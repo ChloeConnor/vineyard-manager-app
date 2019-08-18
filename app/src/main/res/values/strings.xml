@@ -10,11 +10,11 @@
     <string name="create_vineyard_choose_default">Choose which activities you want to track:</string>
     <string name="create_vineyard_toolbar">Create Vineyard</string>
 
-    <string name="Switch1Buds">Count Buds?</string>
-    <string name="Switch2Shoots">Count Shoots?</string>
-    <string name="Switch3Flowers">Count Flowers?</string>
-    <string name="Switch4Bunches">Count Bunches of Grapes?</string>
-    <string name="Switch5Weight">Count Weight of Bunches?</string>
+    <string name="Switch1Buds">Track Number of Buds?</string>
+    <string name="Switch2Shoots">Track Number of Shoots?</string>
+    <string name="Switch3Flowers">Track Number of Flowers?</string>
+    <string name="Switch4Bunches">Track Number of Bunches?</string>
+    <string name="Switch5Weight">Track Weight of Bunches?</string>
 
 
     <string name="Switch6Text">Confirm Vineyard Details</string>

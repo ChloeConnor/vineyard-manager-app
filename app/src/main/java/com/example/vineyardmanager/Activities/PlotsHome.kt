@@ -32,7 +32,7 @@ class PlotsHome : AppCompatActivity() {
         val vineyardName = intent.getStringExtra("vineyardNameHeader")
         val plotName = intent.getStringExtra("plotName")
         val vineyardID = intent.getLongExtra("vineyardID", 0)
-        vineyard_name.text = "$vineyardName's Plots"
+        vineyard_name.text = "$vineyardName's plots"
 
         val newPlot = Plot(
             vineyardID = vineyardID,

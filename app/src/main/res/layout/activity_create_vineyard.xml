@@ -126,8 +126,8 @@
             android:background="@drawable/vm_buttonbackground"
             app:layout_constraintBottom_toBottomOf="@id/create_vineyard_page"
             android:layout_marginBottom="36dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="@dimen/standard_button_margin"
+            android:layout_marginRight="@dimen/standard_button_margin"
             />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
