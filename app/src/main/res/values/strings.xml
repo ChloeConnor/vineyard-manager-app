@@ -22,4 +22,5 @@
 
     <string name="Switch6Text">Confirm Vineyard Details</string>
     <string name="Switch7Text">Confirm Vineyard Details</string>
+    <string name="title_activity_varieties_home">VarietiesHome</string>
 </resources>

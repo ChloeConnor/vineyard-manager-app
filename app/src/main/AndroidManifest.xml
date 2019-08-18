@@ -11,6 +11,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:name=".Activities.VarietiesHome"
+                android:label="@string/title_activity_varieties_home"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
                 android:name=".Activities.CreatePlot"
                 android:label="Create Plot">
         </activity>
