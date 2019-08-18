@@ -16,12 +16,7 @@ class RvAdapterPlots(val plotList: List<Plot>) : RecyclerView.Adapter<RvAdapterP
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.adapter_item_layout_vineyards, p0, false)
-//        v.setOnClickListener { view ->
-//            val intent = Intent(view.context, Varieties::class.java)
-//            intent.putExtra("plotName", plotList[p1].name)
-//            intent.putExtra("vineyardID", plotList[p1].vineyardID)
-//            startActivity(view.context, intent, null)
-//        }
+
         return ViewHolder(v)
     }
     override fun getItemCount(): Int {

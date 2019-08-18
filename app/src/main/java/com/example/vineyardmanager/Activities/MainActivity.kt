@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val db = VineyardManagerDatabase.getAppDatabase(this)
 
         fab_vineyards.setOnClickListener { view ->
@@ -93,8 +92,6 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 }
     interface ClickListener {
         fun onClick(view: View, position: Int)
