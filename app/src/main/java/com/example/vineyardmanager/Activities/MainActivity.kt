@@ -1,10 +1,15 @@
 package com.example.vineyardmanager.Activities
 
+import android.content.Context
 import android.content.Intent
+import android.net.sip.SipSession
 import android.os.Bundle
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.AbsListView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
@@ -53,7 +58,22 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.adapter = rvAdapter
 
-    }
+        recyclerView.addOnItemTouchListener(RecyclerTouchListener(
+            applicationContext,
+            recyclerView, object : ClickListener {
+
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(view.context, PlotsHome::class.java)
+                intent.putExtra("vineyardNameHeader", vineyardsToShow[position].name)
+                intent.putExtra("vineyardID", vineyardsToShow[position].vineyardID)
+                ContextCompat.startActivity(view.context, intent, null)
+                intent.putExtra("VineyardNameToAddPlots", vineyardsToShow[position].name)
+//                Toast.makeText(this@MainActivity, vineyardsToShow[position].name, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onLongClick(view: View?, position: Int) {
+
+            }}))}
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -71,4 +91,56 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
 }
+    interface ClickListener {
+        fun onClick(view: View, position: Int)
+
+        fun onLongClick(view: View?, position: Int)
+    }
+
+    class RecyclerTouchListener(
+        context: Context,
+        recyclerView: RecyclerView,
+        val clickListener: ClickListener?)
+        :RecyclerView.OnItemTouchListener {
+
+        private var gestureDetector: GestureDetector? = null
+
+        init {
+            gestureDetector = GestureDetector(
+                context,
+                object : GestureDetector.SimpleOnGestureListener() {
+                    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                        return true
+                    }
+
+                    override fun onLongPress(e: MotionEvent) {
+                        val child = recyclerView.findChildViewUnder(e.x, e.y)
+                        if (child != null && clickListener != null) {
+                            //FIXME: this should go to edit vineyard activity
+                            clickListener.onLongClick(
+                                child,
+                                recyclerView.getChildAdapterPosition(child)
+                            )
+                        }
+                    }
+                })
+        }
+
+
+        override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+
+            val child = rv.findChildViewUnder(e.x, e.y)
+            if (child != null && clickListener != null && gestureDetector != null && gestureDetector!!.onTouchEvent(e)) {
+                clickListener.onClick(child, rv.getChildAdapterPosition(child))
+            }
+            return false
+        }
+
+        override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+
+        override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+
+        }
+    }
