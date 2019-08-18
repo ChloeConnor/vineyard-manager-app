@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import com.example.vineyardmanager.R
+import com.example.vineyardmanager.dataTypes.Vineyard
+import com.example.vineyardmanager.database.VineyardManagerDatabase
 import kotlinx.android.synthetic.main.activity_create_vineyard.*
 
 class CreateVineyard : AppCompatActivity() {
@@ -22,22 +24,33 @@ class CreateVineyard : AppCompatActivity() {
             intent.putExtra("Client", "client")
 
             val inputName = edit_vineyard_name.text.toString()
-            intent.putExtra("VineyardName", inputName)
 
             val budsInput = switch_buds.isChecked
-            intent.putExtra("CountBuds", budsInput)
 
             val shootsInput = switch_shoots.isChecked
-            intent.putExtra("CountShoots", shootsInput)
 
             val flowersInput = switch_flowers.isChecked
-            intent.putExtra("CountFlowers", flowersInput)
 
             val grapesInput = switch_grapes.isChecked
-            intent.putExtra("CountGrapes", grapesInput)
 
             val weightInput = switch_weight.isChecked
-            intent.putExtra("Weight", weightInput)
+
+            val newVineyard = Vineyard(
+                name = inputName,
+                client = "Client",
+                countBuds = budsInput,
+                countShoots = shootsInput,
+                countFlowers = flowersInput,
+                countGrapes = grapesInput,
+                weight = weightInput
+            )
+            println("newVineyard: $newVineyard")
+
+            val db = VineyardManagerDatabase.getAppDatabase(this)
+
+            if (newVineyard.name != null && newVineyard.name != "") {
+                db.dao().insertVineyard(newVineyard)
+            }
 
             startActivity(intent)
 
