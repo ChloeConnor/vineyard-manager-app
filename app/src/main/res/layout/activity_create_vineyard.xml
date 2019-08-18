@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="@string/CreateVineyardHintMessage"
+            android:text="@string/create_vineyard_hint_message"
             android:ems="10"
             android:id="@+id/edit_vineyard_name"
             android:textColor="@color/colorPrimaryDark"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toBottomOf="@id/edit_vineyard_name" />
 
     <TextView
-            android:text="@string/CreateVineyardChooseDefault"
+            android:text="@string/create_vineyard_choose_default"
             android:layout_width="match_parent"
             android:textSize="6pt"
             android:textColor="@color/colorPrimaryDark"
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:checked="true"
             android:layout_height="wrap_content"
-            android:id="@+id/switch1"
+            android:id="@+id/switch_buds"
             android:textColor="@color/colorPrimaryDark"
             android:thumbTint="@color/colorPrimary"
             android:trackTint="@color/colorPrimaryDark"
@@ -64,12 +64,12 @@
             android:text="@string/Switch2Shoots"
             android:checked="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/switch2"
+            android:layout_height="wrap_content" android:id="@+id/switch_shoots"
             android:textColor="@color/colorPrimaryDark"
             android:thumbTint="@color/colorPrimary"
             android:trackTint="@color/colorPrimaryDark"
 
-            app:layout_constraintTop_toBottomOf="@id/switch1"
+            app:layout_constraintTop_toBottomOf="@id/switch_buds"
 
             android:layout_marginRight="@dimen/switch_margin"
             android:layout_marginLeft="@dimen/switch_margin"/>
@@ -78,12 +78,12 @@
             android:text="@string/Switch3Flowers"
             android:layout_width="match_parent"
             android:checked="true"
-            android:layout_height="wrap_content" android:id="@+id/switch3"
+            android:layout_height="wrap_content" android:id="@+id/switch_flowers"
             android:textColor="@color/colorPrimaryDark"
             android:thumbTint="@color/colorPrimary"
             android:trackTint="@color/colorPrimaryDark"
 
-            app:layout_constraintTop_toBottomOf="@id/switch2"
+            app:layout_constraintTop_toBottomOf="@id/switch_shoots"
 
             android:layout_marginRight="@dimen/switch_margin"
             android:layout_marginLeft="@dimen/switch_margin"/>
@@ -92,12 +92,12 @@
             android:text="@string/Switch4Bunches"
             android:layout_width="match_parent"
             android:checked="true"
-            android:layout_height="wrap_content" android:id="@+id/switch4"
+            android:layout_height="wrap_content" android:id="@+id/switch_grapes"
             android:textColor="@color/colorPrimaryDark"
             android:thumbTint="@color/colorPrimary"
             android:trackTint="@color/colorPrimaryDark"
 
-            app:layout_constraintTop_toBottomOf="@id/switch3"
+            app:layout_constraintTop_toBottomOf="@id/switch_flowers"
 
             android:layout_marginRight="@dimen/switch_margin"
             android:layout_marginLeft="@dimen/switch_margin" />
@@ -106,12 +106,12 @@
             android:text="@string/Switch5Weight"
             android:layout_width="match_parent"
             android:checked="true"
-            android:layout_height="wrap_content" android:id="@+id/switch5"
+            android:layout_height="wrap_content" android:id="@+id/switch_weight"
             android:textColor="@color/colorPrimaryDark"
             android:thumbTint="@color/colorPrimary"
             android:trackTint="@color/colorPrimaryDark"
 
-            app:layout_constraintTop_toBottomOf="@id/switch4"
+            app:layout_constraintTop_toBottomOf="@id/switch_grapes"
 
             android:layout_marginRight="@dimen/switch_margin"
             android:layout_marginLeft="@dimen/switch_margin"
@@ -122,7 +122,7 @@
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/button"
+            android:layout_height="wrap_content" android:id="@+id/vineyard_confirm_button"
             android:background="@drawable/vm_buttonbackground"
             app:layout_constraintBottom_toBottomOf="@id/create_vineyard_page"
             android:layout_marginBottom="36dp"

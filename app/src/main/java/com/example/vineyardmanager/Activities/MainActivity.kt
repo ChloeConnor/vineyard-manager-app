@@ -1,19 +1,22 @@
 package com.example.vineyardmanager.Activities
 
+import android.content.Context
 import android.content.Intent
+import android.net.sip.SipSession
 import android.os.Bundle
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.AbsListView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vineyardmanager.R
-import com.example.vineyardmanager.RvAdapter
+import com.example.vineyardmanager.RvAdapterVineyards
 import com.example.vineyardmanager.dataTypes.Vineyard
-import kotlinx.android.synthetic.main.activity_plots.*
-import java.io.File
-import java.io.FileInputStream
-
+import com.example.vineyardmanager.database.VineyardManagerDatabase
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,50 +24,59 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
+
+        val db = VineyardManagerDatabase.getAppDatabase(this)
+
+        fab_vineyards.setOnClickListener { view ->
             intent = Intent(this, CreateVineyard::class.java)
             startActivity(intent)
         }
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_vineyards)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
+        val newVineyard = Vineyard(
+            name = intent.getStringExtra("VineyardName"),
+            client = intent.getStringExtra("Client"),
+            countBuds = intent.getBooleanExtra("CountBuds", true),
+            countShoots = intent.getBooleanExtra("CountShoots", true),
+            countFlowers = intent.getBooleanExtra("CountFlowers", true),
+            countGrapes = intent.getBooleanExtra("CountGrapes", true),
+            weight = intent.getBooleanExtra("Weight", true)
+        )
+        println("newVineyard: $newVineyard")
 
-        val path = getExternalFilesDir(null)
-        val letDirectory = File(path, "LET")
-        letDirectory.mkdirs()
-        val file = File(letDirectory, "Records.txt")
-
-        val vineyardName: String? = intent.getStringExtra("VineyardName")
-
-        if (vineyardName != null) {
-            file.appendText("$vineyardName;;")
+        if (newVineyard.name != null && newVineyard.name != "") {
+            db.dao().insertVineyard(newVineyard)
         }
 
-        var readInVineyards = ArrayList<String>()
-        var vineyardsToShow = ArrayList<Vineyard>()
+        val vineyardsToShow: List<Vineyard> = db.dao().loadVineyards()
+        println("vineyardsToShow: $vineyardsToShow")
 
-        if (file.exists()) {
-            readInVineyards = ArrayList(FileInputStream(file)
-                .bufferedReader()
-                .use { it.readText() }
-                .split(";;"))
-        }
-
-        if (readInVineyards.isNotEmpty()) {
-        for (vineyard in readInVineyards) {
-            vineyardsToShow.add(Vineyard(vineyard))
-        }}
-
-        vineyardsToShow = ArrayList(vineyardsToShow.dropLast(1))
-
-        println("VINEYARDS TO SHOW: $vineyardsToShow")
-        val rvAdapter = RvAdapter(vineyardsToShow)
+        val rvAdapter = RvAdapterVineyards(vineyardsToShow)
 
         recyclerView.adapter = rvAdapter
-    }
+
+        recyclerView.addOnItemTouchListener(RecyclerTouchListener(
+            applicationContext,
+            recyclerView, object : ClickListener {
+
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(view.context, PlotsHome::class.java)
+                intent.putExtra("vineyardNameHeader", vineyardsToShow[position].name)
+                intent.putExtra("vineyardID", vineyardsToShow[position].vineyardID)
+                ContextCompat.startActivity(view.context, intent, null)
+                Toast.makeText(this@MainActivity, vineyardsToShow[position].name + "'s plots", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onLongClick(view: View, position: Int) {
+                val intent = Intent(view.context, EditVineyard::class.java)
+                intent.putExtra("vineyardNameHeader", vineyardsToShow[position].name)
+                intent.putExtra("vineyardID", vineyardsToShow[position].vineyardID)
+                Toast.makeText(this@MainActivity, "Edit " + vineyardsToShow[position].name, Toast.LENGTH_SHORT).show()
+                startActivity(intent)
+            }}))}
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -82,4 +94,55 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
 }
+    interface ClickListener {
+        fun onClick(view: View, position: Int)
+
+        fun onLongClick(view: View, position: Int)
+    }
+
+    class RecyclerTouchListener(
+        context: Context,
+        recyclerView: RecyclerView,
+        val clickListener: ClickListener?)
+        :RecyclerView.OnItemTouchListener {
+
+        private var gestureDetector: GestureDetector? = null
+
+        init {
+            gestureDetector = GestureDetector(
+                context,
+                object : GestureDetector.SimpleOnGestureListener() {
+                    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                        return true
+                    }
+
+                    override fun onLongPress(e: MotionEvent) {
+                        val child = recyclerView.findChildViewUnder(e.x, e.y)
+                        if (child != null && clickListener != null) {
+                            clickListener.onLongClick(
+                                child,
+                                recyclerView.getChildAdapterPosition(child)
+                            )
+                        }
+                    }
+                })
+        }
+
+
+        override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+
+            val child = rv.findChildViewUnder(e.x, e.y)
+            if (child != null && clickListener != null && gestureDetector != null && gestureDetector!!.onTouchEvent(e)) {
+                clickListener.onClick(child, rv.getChildAdapterPosition(child))
+            }
+            return false
+        }
+
+        override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+
+        override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+
+        }
+    }

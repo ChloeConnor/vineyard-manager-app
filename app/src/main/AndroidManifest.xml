@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.vineyardmanager">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
-
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".Activities.CreateVineyard"
-            android:label="@string/CreateVineyardToolbar">
+        <activity
+                android:name=".Activities.CreatePlot"
+                android:label="Create Plot">
         </activity>
-
+        <activity
+                android:name=".Activities.EditVineyard"
+                android:label="@string/edit_vineyard_toolbar">
+        </activity>
+        <activity
+                android:name=".Activities.CreateVineyard"
+                android:label="@string/create_vineyard_toolbar">
+        </activity>
         <activity
                 android:name=".Activities.PlotsHome"
                 android:label="@string/title_activity_plots"
-                android:parentActivityName=".Activities.MainActivity"
-                android:theme="@style/AppTheme.NoActionBar">
+                android:parentActivityName=".Activities.MainActivity">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.example.vineyardmanager.Activities.MainActivity"/>

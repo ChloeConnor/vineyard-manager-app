@@ -3,19 +3,18 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_plots">Plots</string>
     <string name="vineyards_title">My Vineyards</string>
-    <string name="CreateVineyardHintMessage">Enter a Vineyard Name</string>
+    <string name="edit_vineyard_toolbar">Edit Vineyards</string>
+    <string name="create_vineyard_hint_message">Enter a Vineyard Name</string>
     <string name="SubmitVineyardButtonText">Confirm Vineyard Details</string>
     <string name="CreateVineyardTitleText">Create a new vineyard</string>
-    <string name="CreateVineyardChooseDefault">Choose which activities you want to track:</string>
-    <string name="CreateVineyardToolbar">Create Vineyard</string>
+    <string name="create_vineyard_choose_default">Choose which activities you want to track:</string>
+    <string name="create_vineyard_toolbar">Create Vineyard</string>
 
     <string name="Switch1Buds">Count Buds?</string>
     <string name="Switch2Shoots">Count Shoots?</string>
     <string name="Switch3Flowers">Count Flowers?</string>
     <string name="Switch4Bunches">Count Bunches of Grapes?</string>
     <string name="Switch5Weight">Count Weight of Bunches?</string>
-
-
 
 
     <string name="Switch6Text">Confirm Vineyard Details</string>
