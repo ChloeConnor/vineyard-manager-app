@@ -12,7 +12,7 @@ import androidx.room.migration.Migration
 
 
 
-@Database(entities = [Vineyard::class, Plot::class], version = 3)
+@Database(entities = [Vineyard::class, Plot::class], version = 5)
 abstract class VineyardManagerDatabase : RoomDatabase() {
 
     abstract fun dao(): Dao

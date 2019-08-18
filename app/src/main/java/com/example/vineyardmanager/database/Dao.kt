@@ -1,10 +1,8 @@
 package com.example.vineyardmanager.database
 
+import androidx.room.*
 import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Query
 import com.example.vineyardmanager.dataTypes.Vineyard
-import androidx.room.Insert
 import com.example.vineyardmanager.dataTypes.Plot
 
 
@@ -25,4 +23,7 @@ interface Dao {
 
     @Insert
     fun insertPlot(vararg plot: Plot)
+
+    @Query("DELETE FROM Plot WHERE name is null")
+    fun deletePlotNullNames()
 }

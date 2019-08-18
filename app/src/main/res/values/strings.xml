@@ -10,6 +10,9 @@
     <string name="create_vineyard_choose_default">Choose which activities you want to track:</string>
     <string name="create_vineyard_toolbar">Create Vineyard</string>
 
+    <string name="enter_plot">Enter Plot Name</string>
+    <string name="SubmitPlotButtonText">Confirm Plot Details</string>
+
     <string name="Switch1Buds">Count Buds?</string>
     <string name="Switch2Shoots">Count Shoots?</string>
     <string name="Switch3Flowers">Count Flowers?</string>

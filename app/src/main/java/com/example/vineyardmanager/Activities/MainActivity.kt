@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val db = VineyardManagerDatabase.getAppDatabase(this)
 
         fab_vineyards.setOnClickListener { view ->
@@ -35,21 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_vineyards)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-
-        val newVineyard = Vineyard(
-            name = intent.getStringExtra("VineyardName"),
-            client = intent.getStringExtra("Client"),
-            countBuds = intent.getBooleanExtra("CountBuds", true),
-            countShoots = intent.getBooleanExtra("CountShoots", true),
-            countFlowers = intent.getBooleanExtra("CountFlowers", true),
-            countGrapes = intent.getBooleanExtra("CountGrapes", true),
-            weight = intent.getBooleanExtra("Weight", true)
-        )
-        println("newVineyard: $newVineyard")
-
-        if (newVineyard.name != null && newVineyard.name != "") {
-            db.dao().insertVineyard(newVineyard)
-        }
 
         val vineyardsToShow: List<Vineyard> = db.dao().loadVineyards()
         println("vineyardsToShow: $vineyardsToShow")
@@ -93,8 +77,6 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
 }
     interface ClickListener {
         fun onClick(view: View, position: Int)

@@ -14,7 +14,10 @@ import com.example.vineyardmanager.dataTypes.Vineyard
 class RvAdapterVineyards(val vineyardList: List<Vineyard>) : RecyclerView.Adapter<RvAdapterVineyards.ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val v = LayoutInflater.from(p0.context).inflate(R.layout.adapter_item_layout_vineyards, p0, false)
+        val v = LayoutInflater.from(p0.context).inflate(
+            R.layout.adapter_item_layout_vineyards,
+            p0,
+            false)
 
         return ViewHolder(v)
     }

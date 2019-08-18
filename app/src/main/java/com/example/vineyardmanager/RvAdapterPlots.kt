@@ -15,13 +15,11 @@ import com.example.vineyardmanager.Activities.PlotsHome
 class RvAdapterPlots(val plotList: List<Plot>) : RecyclerView.Adapter<RvAdapterPlots.ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val v = LayoutInflater.from(p0.context).inflate(R.layout.adapter_item_layout_vineyards, p0, false)
-//        v.setOnClickListener { view ->
-//            val intent = Intent(view.context, Varieties::class.java)
-//            intent.putExtra("plotName", plotList[p1].name)
-//            intent.putExtra("vineyardID", plotList[p1].vineyardID)
-//            startActivity(view.context, intent, null)
-//        }
+        val v = LayoutInflater.from(p0.context).inflate(
+            R.layout.adapter_item_layout_plots,
+            p0,
+            false)
+
         return ViewHolder(v)
     }
     override fun getItemCount(): Int {
@@ -30,9 +28,11 @@ class RvAdapterPlots(val plotList: List<Plot>) : RecyclerView.Adapter<RvAdapterP
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
 
         p0.name.text = plotList[p1].name
+
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         val name: TextView = itemView.findViewById(R.id.plot_name)
 
     }

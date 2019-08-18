@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class Plot (
     @PrimaryKey(autoGenerate = true)
     val plotID: Long = 0,
+
     val vineyardID: Long?,
     val name: String?
 )
