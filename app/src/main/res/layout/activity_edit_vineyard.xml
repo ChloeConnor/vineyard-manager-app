@@ -7,7 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".Activities.EditVineyard">
 
-
     <TextView
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -20,6 +19,20 @@
             android:textSize="16pt"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:id="@+id/vineyard_name_edit"/>
+            android:id="@+id/vineyard_name_for_edit"/>
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/create_vineyard_hint_message"
+            android:ems="10"
+            android:id="@+id/edit_vineyard_name"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@id/vineyard_name_for_edit"
+            android:layout_marginTop="100dp"
+
+            android:layout_marginRight="@dimen/standard_edge_margin"
+            android:layout_marginLeft="@dimen/standard_edge_margin"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
