@@ -58,6 +58,13 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(view.context, EditVineyard::class.java)
                 intent.putExtra("vineyardNameHeader", vineyardsToShow[position].name)
                 intent.putExtra("vineyardID", vineyardsToShow[position].vineyardID)
+
+                intent.putExtra("budValue",vineyardsToShow[position].countBuds)
+                intent.putExtra("shootValue",vineyardsToShow[position].countShoots)
+                intent.putExtra("flowerValue",vineyardsToShow[position].countFlowers)
+                intent.putExtra("grapeValue",vineyardsToShow[position].countGrapes)
+                intent.putExtra("weightValue",vineyardsToShow[position].weight)
+
                 Toast.makeText(this@MainActivity, "Edit " + vineyardsToShow[position].name, Toast.LENGTH_SHORT).show()
                 startActivity(intent)
             }}))}
