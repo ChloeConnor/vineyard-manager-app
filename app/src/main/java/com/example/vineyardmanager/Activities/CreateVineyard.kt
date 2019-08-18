@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.activity_create_vineyard.*
 
 class CreateVineyard : AppCompatActivity() {
 
-//    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_vineyard)
@@ -20,23 +19,16 @@ class CreateVineyard : AppCompatActivity() {
         vineyard_confirm_button.setOnClickListener { view ->
             val intent = Intent(this, MainActivity::class.java)
 
-            //FIXME: need a value for client
-            intent.putExtra("Client", "client")
-
             val inputName = edit_vineyard_name.text.toString()
-
             val budsInput = switch_buds.isChecked
-
             val shootsInput = switch_shoots.isChecked
-
             val flowersInput = switch_flowers.isChecked
-
             val grapesInput = switch_grapes.isChecked
-
             val weightInput = switch_weight.isChecked
 
             val newVineyard = Vineyard(
                 name = inputName,
+                //FIXME: need a value for client
                 client = "Client",
                 countBuds = budsInput,
                 countShoots = shootsInput,

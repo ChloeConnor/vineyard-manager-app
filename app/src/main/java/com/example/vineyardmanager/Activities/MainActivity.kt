@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view_vineyards)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-
         val vineyardsToShow: List<Vineyard> = db.dao().loadVineyards()
         println("vineyardsToShow: $vineyardsToShow")
 

@@ -24,4 +24,6 @@ interface Dao {
     @Insert
     fun insertPlot(vararg plot: Plot)
 
+    @Query("DELETE FROM Plot WHERE name is null")
+    fun deletePlotNullNames()
 }

@@ -5,6 +5,35 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activities.CreatePlot">
+        tools:context=".Activities.CreatePlot"
+        android:id="@+id/create_plot_page">
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="@string/enter_plot"
+            android:ems="10"
+            android:id="@+id/add_plot_name"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintTop_toTopOf="@id/create_plot_page"
+            android:layout_marginTop="100dp"
+
+            android:layout_marginRight="@dimen/standard_edge_margin"
+            android:layout_marginLeft="@dimen/standard_edge_margin"/>
+
+    <Button
+            android:text="@string/SubmitPlotButtonText"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/plot_confirm_button"
+            android:background="@drawable/vm_buttonbackground"
+            app:layout_constraintBottom_toBottomOf="@id/create_plot_page"
+            android:layout_marginBottom="36dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

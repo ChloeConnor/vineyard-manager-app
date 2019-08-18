@@ -27,28 +27,20 @@ class PlotsHome : AppCompatActivity() {
         }
 
         val recyclerViewPlots = findViewById<RecyclerView>(R.id.recycler_view_plots)
-        recyclerViewPlots.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerViewPlots.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false) as RecyclerView.LayoutManager?
 
         val vineyardName = intent.getStringExtra("vineyardNameHeader")
-        val plotName = intent.getStringExtra("plotName")
-        val vineyardID = intent.getLongExtra("vineyardID", 0)
-        vineyard_name.text = "$vineyardName's Plots"
 
-        val newPlot = Plot(
-            vineyardID = vineyardID,
-            name = plotName
-        )
-
-        if (newPlot.name != null && newPlot.name != "") {
-            db.dao().insertPlot(newPlot)
-        }
+        vineyard_name.text = "$vineyardName's plots"
 
         val plotsToShow: List<Plot> = db.dao().loadPlots()
 
-        val rvAdapter = RvAdapterPlots(plotsToShow)
+        if (plotsToShow.isNotEmpty()) {
+            val rvAdapterPlots = RvAdapterPlots(plotsToShow)
 
-        recyclerViewPlots.adapter = rvAdapter
-
+            println("CHECKPOINT: $plotsToShow")
+            recyclerViewPlots.adapter = rvAdapterPlots
+        }
     }
 
 }
