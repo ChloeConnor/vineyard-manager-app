@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(view.context, PlotsHome::class.java)
                 intent.putExtra("vineyardNameHeader", vineyardsToShow[position].name)
                 intent.putExtra("vineyardID", vineyardsToShow[position].vineyardID)
+                println("vineyardID on click: ${vineyardsToShow[position].vineyardID}")
+
                 ContextCompat.startActivity(view.context, intent, null)
                 Toast.makeText(this@MainActivity, vineyardsToShow[position].name + "'s plots", Toast.LENGTH_SHORT).show()
             }

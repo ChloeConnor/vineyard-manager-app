@@ -21,19 +21,25 @@ class PlotsHome : AppCompatActivity() {
 
         val db = VineyardManagerDatabase.getAppDatabase(this)
 
+        val vineyardName = intent.getStringExtra("vineyardNameHeader")
+        val vineyardID = intent.getLongExtra("vineyardID", -1)
+
         fab_plots.setOnClickListener { view ->
             intent = Intent(this, CreatePlot::class.java)
+            intent.putExtra("vineyardNameHeader", vineyardName)
+            intent.putExtra("vineyardID", vineyardID)
             startActivity(intent)
         }
 
         val recyclerViewPlots = findViewById<RecyclerView>(R.id.recycler_view_plots)
         recyclerViewPlots.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false) as RecyclerView.LayoutManager?
 
-        val vineyardName = intent.getStringExtra("vineyardNameHeader")
+
 
         vineyard_name.text = "$vineyardName's plots"
 
         val plotsToShow: List<Plot> = db.dao().loadPlots()
+            .filter { plot -> plot.vineyardID ==  vineyardID}
 
         if (plotsToShow.isNotEmpty()) {
             val rvAdapterPlots = RvAdapterPlots(plotsToShow)
